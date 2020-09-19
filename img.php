@@ -3,6 +3,7 @@ $dbhost = 'localhost';
 $dbname = '';
 $dbusername = '';
 $dbpassword = '';
+$secretkey = '';
 
 $b64 = $_POST['b64'];
 $imgid = $_GET['id'];
@@ -16,7 +17,7 @@ try {
 
 if ($imgid && $b64 || !$imgid && !$b64) {
   $secret = $_GET['secret'];
-  if (isset($secret) && $secret == '9048jnb83h548934598459845j'){
+  if (isset($secret) && $secret == $secretkey){
     $curtime = time();
     $request = $dbcon->query("SELECT * FROM images");
     $result = $request->fetchAll(PDO::FETCH_ASSOC);
